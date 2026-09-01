@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Noto Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+}
+
+html {
+  direction: rtl;
+  font-family: var(--font-sans);
+  background-color: #f8fafc;
+  color: #0f172a;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  line-height: 2.15;
+  overflow-x: hidden;
+}
+
+/* Nastaliq & Urdu Typography Vertical Metrics Calibration */
+h1, h2, h3, h4, h5, h6, .urdu-heading {
+  font-family: var(--font-sans);
+  line-height: 1.85;
+  padding-top: 0.15em;
+  padding-bottom: 0.15em;
+}
+
+p, span, a, button, input {
+  font-family: var(--font-sans);
+}
+
+.font-urdu {
+  font-family: var(--font-urdu);
+  line-height: 2.4;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+/* Fix line-clamp vertical clipping & text overlap for Urdu characters */
+[class*="line-clamp-"] {
+  padding-top: 0.1em;
+  padding-bottom: 0.15em;
+  line-height: 2.0 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #004b23;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #003619;
+}
+
+/* Glassmorphism Header Effects */
+.glass-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Breaking Ticker Container */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
